@@ -1,1 +1,1 @@
-Just open `index.html` and you can see the test result and also play with the application.
+Just open `index.html` in your brower; and you can see the test result and also play with the application.
