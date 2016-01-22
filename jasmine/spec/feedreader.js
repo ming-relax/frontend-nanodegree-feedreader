@@ -23,7 +23,7 @@ $(function() {
          */
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+            expect(allFeeds.length).toBeGreaterThan(0);
         });
 
 
@@ -34,7 +34,7 @@ $(function() {
          it('has url defined', function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.url).toBeDefined();
-                expect(feed.url.length).toBeGreaterThan(1);
+                expect(feed.url.length).toBeGreaterThan(0);
             });
          });
 
@@ -45,7 +45,7 @@ $(function() {
          it('has name defined', function() {
             allFeeds.forEach(function(feed) {
                 expect(feed.name).toBeDefined();
-                expect(feed.name.length).toBeGreaterThan(1);
+                expect(feed.name.length).toBeGreaterThan(0);
             });
          });
 
@@ -71,9 +71,10 @@ $(function() {
           */
           it('toggle the menu when click menu icon', function() {
             var menuIcon = $('.menu-icon-link');
-            expect($('body').attr('class')).toContain('menu-hidden')
             menuIcon.click();
-            expect($('body').attr('class')).not.toContain('menu-hidden')
+            expect($('body').attr('class')).not.toContain('menu-hidden');
+            menuIcon.click();
+            expect($('body').attr('class')).toContain('menu-hidden');            
           });
     })
 
@@ -90,7 +91,7 @@ $(function() {
          });
 
          it('has .entry element', function(done) {
-            expect($('.feed .entry').length).toBeGreaterThan(1);
+            expect($('.feed .entry').length).toBeGreaterThan(0);
             done();
          });
     })
@@ -107,11 +108,11 @@ $(function() {
          });
 
          it('change the content', function(done) {
-            var oldTitle = $('.header-title').html();
+            var oldContainer = $('.feed').html();
 
             loadFeed(1, function() {
-                var newTitle = $('.header-title').html();
-                expect(oldTitle).not.toEqual(newTitle);
+                var newTitle = $('.feed').html();
+                expect(oldContainer).not.toEqual(newTitle);
                 done();
             })
          });
